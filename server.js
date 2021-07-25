@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+
+const auth = require("./routes/auth_routes.js");
 //const cors = require("cors");
 
 const app = express();
@@ -18,10 +20,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to schedule API application." });
-});
+//Routing
+app.use('/auth', auth);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
