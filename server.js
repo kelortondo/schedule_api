@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const auth = require("./routes/auth_routes.js");
+const users = require("./routes/users_routes.js");
+
 //const cors = require("cors");
 
 const app = express();
@@ -22,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routing
 app.use('/auth', auth);
+app.use('/users', users)
 
 
 // set port, listen for requests

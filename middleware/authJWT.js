@@ -18,14 +18,14 @@ exports.verifyToken = (req, res, next) => {
         message: "Unauthorzied request"
       });
     } else {
-      req.userId = decoded.id;
       next();
     }
   });
 };
 
 exports.isAdmin = (req, res, next) => {
-  User.findByPk(req.uuid).then(user => {
+  console.log(req)
+  User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 2) {
       next();
       return;
@@ -38,7 +38,7 @@ exports.isAdmin = (req, res, next) => {
 }
 
 exports.isEmployeeOrAdmin = (req, res, next) => {
-  User.findByPk(req.uuid).then(user => {
+  User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 3 || user.role_id == 2) {
       next();
       return;
@@ -51,7 +51,7 @@ exports.isEmployeeOrAdmin = (req, res, next) => {
 }
 
 exports.isClient = (req, res, next) => {
-  User.findByPk(req.uuid).then(user => {
+  User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 1) {
       next();
       return;
