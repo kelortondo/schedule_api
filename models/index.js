@@ -24,8 +24,10 @@ db.user = require("../models/user_model.js")(sequelize, Sequelize);
 db.preference = require("../models/preference_model.js")(sequelize, Sequelize);
 db.appointment_type = require("../models/appointment_type_model.js")(sequelize, Sequelize);
 db.template = require("../models/template_model.js")(sequelize, Sequelize);
+db.schedule = require("../models/schedule_model.js")(sequelize, Sequelize);
 
 //Set relations between tables
 db.user.belongsTo(db.role)
+db.schedule.belongsTo(db.template)
 
 module.exports = db;
