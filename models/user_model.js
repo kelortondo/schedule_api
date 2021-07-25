@@ -29,7 +29,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     role: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: Role,
+        key: 'id'
+      }
     },
     email: {
       type: DataTypes.TEXT,
@@ -44,7 +48,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     uuid: {
       type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4 // Or Sequelize.UUIDV1
+      defaultValue: Sequelize.UUIDV4, // Or Sequelize.UUIDV1
+      primaryKey: true
     }
   });
 
