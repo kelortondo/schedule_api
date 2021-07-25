@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize"); // Import the built-in data types
+const Role = require("./role_model.js");
 
 module.exports = (sequelize, Sequelize) => {
   //first argument represents the table name
@@ -26,14 +27,6 @@ module.exports = (sequelize, Sequelize) => {
     phone: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    role: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: Role,
-        key: 'id'
-      }
     },
     email: {
       type: DataTypes.TEXT,
