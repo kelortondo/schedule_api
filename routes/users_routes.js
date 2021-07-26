@@ -4,7 +4,7 @@ var router = express.Router();
 const { verifyToken, isEmployeeOrAdmin } = require("../middleware/authJWT.js");
 const { getAllUsers } = require("../controllers/users_controller.js")
 
-router.get('/', [verifyToken, isEmployeeOrAdmin, getAllUsers]);
+router.get('/all', [verifyToken, isEmployeeOrAdmin, getAllUsers]);
 
 //TODO: add endpoint for single user
 

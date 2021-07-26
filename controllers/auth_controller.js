@@ -20,12 +20,6 @@ exports.signUp = (req, res) => {
   .then((user) => {
     res.status(201).send({
       id: user.uuid,
-      username: user.username,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      phone: user.phone,
-      dob: user.dob,
       role: user.role_id,
     })
   })
@@ -63,12 +57,6 @@ exports.signIn = (req, res, next) => {
 
       res.status(200).send({
         id: user.uuid,
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        phone: user.phone,
-        dob: user.dob,
         role: user.role_id,
         accessToken: token
       })

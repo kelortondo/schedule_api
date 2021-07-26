@@ -27,7 +27,6 @@ exports.verifyToken = (req, res, next) => {
 
 //Verifies that a user is an administrator
 exports.isAdmin = (req, res, next) => {
-  console.log(req)
   User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 2) {
       next();
