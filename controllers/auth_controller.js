@@ -5,6 +5,8 @@ const User = db.user;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+
+//Handles user sign up
 exports.signUp = (req, res) => {
   User.create({
     username: req.body.username,
@@ -32,6 +34,7 @@ exports.signUp = (req, res) => {
   })
 };
 
+//Handles user sign in
 exports.signIn = (req, res, next) => {
   User.findOne({
     where: {

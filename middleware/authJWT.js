@@ -3,6 +3,7 @@ const config = require("../config/auth_config.js");
 const db = require("../models");
 const User = db.user;
 
+//Verifies that a token is valid
 exports.verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
 
@@ -23,6 +24,8 @@ exports.verifyToken = (req, res, next) => {
   });
 };
 
+
+//Verifies that a user is an administrator
 exports.isAdmin = (req, res, next) => {
   console.log(req)
   User.findByPk(req.body.uuid).then(user => {
@@ -37,6 +40,7 @@ exports.isAdmin = (req, res, next) => {
   });
 }
 
+//Verifies that a user is either an adiministrator or an employee
 exports.isEmployeeOrAdmin = (req, res, next) => {
   User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 3 || user.role_id == 2) {
@@ -50,6 +54,7 @@ exports.isEmployeeOrAdmin = (req, res, next) => {
   });
 }
 
+//Verifies that a user is a client
 exports.isClient = (req, res, next) => {
   User.findByPk(req.body.uuid).then(user => {
     if (user.role_id === 1) {
