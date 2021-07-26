@@ -44,7 +44,8 @@ Using a utility such as Postman, make a POST request to http://localhost:8080/au
 
 ## Endpoints
 ### `/auth`
-For creating new users and validating returning users
+<b>For creating new users and validating returning users</b>
+
 ##### `POST /auth/signup`
 Creates a new user.
 Accepts the following body params, all of which are strings:
@@ -71,9 +72,10 @@ Returns:
 - `role` (permissions role as an integer)
 - `accessToken` (string)
 
-### /users
-For returning user information.
-##### /all
+### `/users`
+<b>For retrieving user information</b>
+
+##### `GET /users/all`
 Requires an administrator or employee role to return all users.
 Accepts a single body parameter, as a string:
 - `uuid` (unique user id, who is making the query)
