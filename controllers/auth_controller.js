@@ -66,3 +66,20 @@ exports.signIn = (req, res, next) => {
     res.status(500).send({ message: err.message });
   });
 }
+
+//Resets a password
+exports.resetPassword = (req, res) => {
+  console.log(req.body)
+  User.update(
+    { password: bcrypt.hashSync(req.body.newPassword, 8)},
+    { where:
+      {username: req.body.username }
+    }
+  )
+    .then(result =>
+      res.status(200).send("Password successfully updated.")
+    )
+    .catch(err =>
+      res.status(500).send(err)
+    )
+}

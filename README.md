@@ -72,6 +72,16 @@ Returns:
 - `role` (permissions role as an integer)
 - `accessToken` (string)
 
+##### `POST /auth/reset-password`
+Resets a user's password.
+Accepts the following body params, all of which are strings:
+- `username`
+- `newPassword`
+
+Returns:
+- 200 code on success
+- 500 code on failure
+
 ### `/users`
 <b>For retrieving user information</b>
 

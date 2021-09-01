@@ -4,7 +4,8 @@
   "description": "An API for accessing a PG DB used for scheduling of appointments.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-up": "npm install && npm run start"
   },
   "repository": {
     "type": "git",
