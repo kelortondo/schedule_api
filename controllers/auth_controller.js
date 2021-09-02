@@ -69,7 +69,6 @@ exports.signIn = (req, res, next) => {
 
 //Resets a password
 exports.resetPassword = (req, res) => {
-  console.log(req.body)
   User.update(
     { password: bcrypt.hashSync(req.body.newPassword, 8)},
     { where:
@@ -78,6 +77,23 @@ exports.resetPassword = (req, res) => {
   )
     .then(result =>
       res.status(200).send("Password successfully updated.")
+    )
+    .catch(err =>
+      res.status(500).send(err)
+    )
+}
+
+//Change permission role
+exports.changeRole = (req, res) => {
+  console.log(req.body)
+  User.update(
+    { role_id: parseInt(req.body.role_id)},
+    { where:
+      {username: req.body.username }
+    }
+  )
+    .then(result =>
+      res.status(200).send("User role successfully updated.")
     )
     .catch(err =>
       res.status(500).send(err)

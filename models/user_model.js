@@ -45,6 +45,5 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true
     }
   });
-
   return User;
 };
