@@ -44,7 +44,7 @@ Using a utility such as Postman, make a POST request to http://localhost:8080/au
 
 ## Endpoints
 ### `/auth`
-<b>For creating new users and validating returning users</b>
+<b>For creating new users and validating returning users as well as managing passwords and permissions.</b>
 
 ##### `POST /auth/signup`
 Creates a new user.
@@ -80,6 +80,21 @@ Accepts the following body params, all of which are strings:
 
 Returns:
 - 200 code on success
+- 500 code on failure
+
+##### `POST /auth/change-role`
+Changes a user's role. Requires admin privileges.
+Requires the following body params, all of which are strings:
+- `username`
+- `role-id`
+  - 1 = client/customer
+  - 2 = admin
+  - 3 = non-admin employee
+- `uuid` (unique user id, who is making the request)
+
+Returns:
+- 200 code on success
+- 403 for inadequate permissions
 - 500 code on failure
 
 ### `/users`
